@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estoque - Admin</title>
+  <link rel="icon" href="logoestoque.png">
+
+  <!-- Fontes -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="estoqueadmin.css">
+</head>
+<body>
+  <button class="voltar" id="btn-voltar">←</button>
+
+  <div class="overlay">
+    <h1 class="titulo">ESTOQUE - ADMIN</h1>
+
+    <div class="novo-produto">
+      <input type="text" id="nome-produto" placeholder="Nome do produto">
+      <input type="number" id="preco-produto" placeholder="Preço (R$)" step="0.01">
+      <input type="number" id="quantidade-produto" placeholder="Quantidade">
+      <button id="btn-adicionar">➕ Adicionar</button>
+    </div>
+
+    <div class="container">
+      <table class="tabela">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Quantidade</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Produtos carregados via JS -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="estoqueadmin.js"></script>
+  <script>
+    // Voltar para página anterior
+    document.getElementById('btn-voltar').addEventListener('click', () => {
+      window.history.back();
+    });
+  </script>
+</body>
+</html>

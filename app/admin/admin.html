@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel Admin</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Hanken Grotesk', sans-serif;
+      background-image: url('fundoadmin.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      color: #000;
+    }
+
+    /* Cabeçalho */
+    .admin-header {
+      position: absolute;
+      top: 30px;
+      left: 40px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .voltar {
+      font-size: 32px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #000;
+      transition: transform 0.3s ease;
+    }
+
+    .voltar:hover {
+      transform: scale(1.2);
+    }
+
+    .titulo {
+      font-size: 65px;
+      margin: 0;
+      letter-spacing: -1px;
+    }
+
+    .loja-btn {
+      font-size: 22px;
+      background-color: #2f2e2d;
+      color: #fff;
+      border: none;
+      border-radius: 36px;
+      padding: 10px 32px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-left: 20px;
+    }
+
+    .loja-btn:hover {
+      background-color: #3a3938;
+      transform: scale(1.05);
+    }
+
+    /* Container principal */
+    .admin-container {
+      position: absolute;
+      top: 140px;
+      left: 200px;
+      right: 120px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 80px;
+    }
+
+    .classificacao-produtos,
+    .classificacao-lojas {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .classificacao-produtos h2,
+    .classificacao-lojas h1,
+    .bloco-loja h3,
+    .totais h2 {
+      font-weight: normal;
+    }
+
+    .classificacao-produtos .caixa,
+    .bloco-loja .caixa {
+      background-color: rgba(255,255,255,0.9);
+      border: 3px solid #000;
+      border-radius: 25px;
+      padding: 25px;
+      font-size: 20px;
+      line-height: 1.9;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      overflow-y: auto;
+    }
+
+    .classificacao-produtos .caixa {
+      width: 340px;
+      height: 380px;
+    }
+
+    .bloco-loja .caixa {
+      width: 260px;
+      height: 260px;
+      font-size: 18px;
+    }
+
+    .linhas-lojas {
+      display: flex;
+      justify-content: center;
+      gap: 70px;
+      width: 100%;
+    }
+
+    /* Rodapé */
+    .rodape-admin {
+      position: absolute;
+      bottom: 45px;
+      left: 0;
+      right: 0;
+      text-align: center;
+    }
+
+    .caixa-control {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-size: 22px;
+    }
+
+    .caixa-control button {
+      width: 38px;
+      height: 38px;
+      font-size: 24px;
+      background-color: rgba(255,255,255,0.9);
+      border: 2px solid #000;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+    }
+
+    .caixa-control button:hover {
+      background-color: #f3f3f3;
+      transform: scale(1.1);
+    }
+
+    .botoes {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      margin-top: 25px;
+    }
+
+    .botoes button {
+      font-size: 24px;
+      background-color: rgba(255,255,255,0.9);
+      border: 3px solid #000;
+      border-radius: 36px;
+      padding: 14px 45px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+
+    .botoes button:hover {
+      background-color: #f3f3f3;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="admin-header">
+    <button class="voltar" onclick="window.history.back()">←</button>
+    <h1 class="titulo">ADMIN</h1>
+    <button id="btn-loja" class="loja-btn">Loja</button>
+  </div>
+
+  <div class="admin-container">
+    <div class="classificacao-produtos">
+      <h2>Classificação de produtos</h2>
+      <div id="lista-produtos" class="caixa"></div>
+    </div>
+
+    <div class="classificacao-lojas">
+      <h1>Classificação de lojas</h1>
+      <div class="linhas-lojas">
+        <div class="bloco-loja">
+          <h3>Vendeu mais</h3>
+          <div id="lista-vendeu" class="caixa"></div>
+        </div>
+        <div class="bloco-loja">
+          <h3>Lucrou mais</h3>
+          <div id="lista-lucrou" class="caixa"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rodape-admin">
+    <div class="totais">
+      <h2 id="total-empresa">Total da empresa: R$0,00</h2>
+      <div class="caixa-control">
+  <button onclick="alterarCaixa(-1)">−</button>
+  <span id="caixaValor">Caixa inicial: R$0,00</span>
+  <button onclick="alterarCaixa(1)">+</button>
+  <button onclick="concluirCaixa()">✅ Concluir</button>
+</div>
+    </div>
+
+    <div class="botoes">
+      <button onclick="window.location.href='/app/estoque/estoqueadmin.html'">Estoque</button>
+      <button onclick="window.location.href='/app/estoque/dadosavancados.html'">Dados avançados</button>
+    </div>
+  </div>
+
+  <script>
+let valorCaixa = 0;
+let idLoja = 0;
+
+// Páginas correspondentes a cada loja
+const paginasNoob = {
+  1: "auraessencia/aura.html",
+  2: "bookcoffemoon/book.html",
+  3: "colibri/colibri.html",
+  4: "flordelotus/lotus.html",
+  5: "jardimencantado/jardim.html",
+  6: "saboremagia/saboremagia.html",
+  7: "sigma/sigma.html"
+};
+
+async function carregarDados() {
+  try {
+    const res = await fetch("admin_fetch.php");
+    const data = await res.json();
+
+    if (data.error) {
+      alert(data.error);
+      return;
+    }
+
+    idLoja = data.id_loja || 0;
+
+    // ======= BOTÃO LOJA =======
+    document.getElementById("btn-loja").onclick = () => {
+      const destino = paginasNoob[idLoja];
+      if (destino) {
+        // Corrige caminho absoluto
+        window.location.href = `/app/lojas/${destino}`;
+      } else {
+        alert("Loja não encontrada ou não atribuída a este admin.");
+      }
+    };
+
+    // ======= PRODUTOS =======
+    const produtos = Array.isArray(data.produtos) ? data.produtos : [];
+    document.getElementById("lista-produtos").innerHTML =
+      produtos.length > 0
+        ? produtos.map((p, i) => `${i + 1}. ${p}`).join("<br>")
+        : "Nenhum produto encontrado.";
+
+    // ======= LOJAS =======
+    const vendeu = Array.isArray(data.vendeu) ? data.vendeu : [];
+    document.getElementById("lista-vendeu").innerHTML =
+      vendeu.length > 0
+        ? vendeu.map((l, i) => `${i + 1}. ${l}`).join("<br>")
+        : "Nenhuma loja encontrada.";
+
+    const lucrou = Array.isArray(data.lucrou) ? data.lucrou : [];
+    document.getElementById("lista-lucrou").innerHTML =
+      lucrou.length > 0
+        ? lucrou.map((l, i) => `${i + 1}. ${l}`).join("<br>")
+        : "Nenhuma loja encontrada.";
+
+    // ======= TOTAL EMPRESA =======
+    const totalEmpresa = parseFloat(data.total_empresa || 0);
+    document.getElementById("total-empresa").textContent =
+      `Total da empresa: R$${totalEmpresa.toFixed(2).replace('.', ',')}`;
+
+    // ======= CAIXA INICIAL =======
+    valorCaixa = parseFloat(data.caixa_inicial || 0);
+    atualizarCaixaDisplay();
+  } catch (err) {
+    console.error("Erro ao carregar dados:", err);
+  }
+}
+
+function atualizarCaixaDisplay() {
+  document.getElementById("caixaValor").textContent =
+    `Caixa inicial: R$${valorCaixa.toFixed(2).replace('.', ',')}`;
+}
+
+function alterarCaixa(direcao) {
+  valorCaixa += direcao * 0.50;
+  if (valorCaixa < 0) valorCaixa = 0;
+  atualizarCaixaDisplay();
+}
+
+// ✅ Botão CONCLUIR envia para o BD
+async function concluirCaixa() {
+  try {
+    const res = await fetch("caixa_inicial_update.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id_loja: idLoja, caixa_inicial: valorCaixa })
+    });
+
+    const data = await res.json();
+    if (data.success) {
+      alert("Caixa inicial salvo com sucesso!");
+    } else {
+      alert("Erro ao salvar caixa inicial: " + (data.error || ""));
+    }
+  } catch (err) {
+    console.error("Erro ao concluir caixa:", err);
+    alert("Erro de conexão ao salvar o caixa.");
+  }
+}
+
+carregarDados();
+</script>
+</body>
+</html>

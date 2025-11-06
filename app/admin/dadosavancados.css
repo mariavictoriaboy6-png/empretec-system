@@ -1,0 +1,12 @@
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-image: url(dadosavançadosfundo.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 100vh;
+  margin: 0;
+  padding: 20px;
+}

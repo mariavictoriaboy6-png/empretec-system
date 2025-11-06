@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estoque</title>
+  <link rel="icon" href="logoestoque.png">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="estoque.css">
+</head>
+<body>
+  <button class="voltar" id="btn-voltar">←</button>
+  <div class="overlay">
+    <h1 class="titulo">ESTOQUE</h1>
+    <div class="container">
+      <table class="tabela">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Quantidade</th>
+          </tr>
+        </thead>
+        <tbody id="estoque-body">
+          <!-- Linhas carregadas via JS -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="estoque.js"></script>
+  <script>
+  // Faz a seta voltar para a página anterior
+  document.getElementById('btn-voltar').addEventListener('click', () => {
+    window.history.back();
+  });
+</script>
+</body>
+</html>

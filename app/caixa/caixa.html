@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caixa</title>
+  <link rel="stylesheet" href="caixa.css">
+  <link rel="icon" href="logocaixa.png">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Plus+Jakarta+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+  <button class="voltar" id="btn-voltar">←</button>
+  <div class="container">
+    <div class="bloco">
+      <ul class="produtos" id="produtos"></ul>
+      <div class="total" id="total">R$0,00</div>
+    </div>
+
+    <div class="barra-busca">
+      <img src="procurar.png" class="procurar" alt="Buscar">
+      <input type="text" id="buscar" autocomplete="off">
+      <ul id="sugestoes" class="sugestoes"></ul>
+    </div>
+  </div>
+
+  <div class="botoes-superiores">
+    <button onclick="window.location.href='../historico/historico.html'">Histórico</button>
+    <button onclick="window.location.href='../estoque/estoque.html'">Estoque</button>
+  </div>
+
+  <div class="botao-inferior">
+    <button id="finalizar">Concluir compra</button>
+  </div>
+
+  <!-- overlay e popup -->
+  <div id="overlay">
+    <div id="popup">
+      <!-- Etapa 1: Dados -->
+      <div id="etapa1">
+        <h2>DADOS</h2>
+        <div class="campo">
+          <label for="nomeCliente">Nome</label>
+          <input type="text" id="nomeCliente" class="popup-input">
+        </div>
+
+        <div class="campo">
+          <label for="notaAdicional">Nota adicional</label>
+          <textarea id="notaAdicional" class="popup-textarea"></textarea>
+        </div>
+
+        <div class="botoes-popup">
+          <button id="proximo">Próximo</button>
+        </div>
+      </div>
+
+      <!-- Etapa 2: Forma de pagamento -->
+      <div id="etapa2" style="display: none;">
+        <h2>FORMA DE PAGAMENTO</h2>
+
+        <div class="botoes-pagamento">
+          <button id="btnPix">PIX</button>
+          <button id="btnDinheiro">DINHEIRO</button>
+        </div>
+
+        <!-- conteúdo dinâmico -->
+        <div id="conteudoPagamento"></div>
+
+        <div class="botoes-popup">
+          <button id="concluir">Concluir</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="caixa.js"></script>
+  <script>
+    // Faz a seta voltar para a página anterior
+    document.getElementById('btn-voltar').addEventListener('click', () => {
+      window.history.back();
+    });
+  </script>
+</body>
+</html>

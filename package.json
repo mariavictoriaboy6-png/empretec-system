@@ -1,0 +1,36 @@
+{
+"name": "empretec-system",
+"version": "1.0.0",
+"description": "Sistema de gestão Empretec",
+"main": "main.js",
+"author": "Maria Victoria",
+"scripts": {
+"start": "electron .",
+"build": "electron-builder"
+},
+"build": {
+"appId": "com.empretec.system",
+"productName": "Empretec System",
+"directories": {
+"output": "dist"
+},
+"files": [
+"**/*"
+],
+"win": {
+"target": "nsis",
+"icon": "logo.ico"
+},
+"nsis": {
+"oneClick": false,
+"allowToChangeInstallationDirectory": true,
+"installerIcon": "logo.ico",
+"artifactName": "EmpretecSystemSetup.exe"
+}
+},
+"dependencies": {},
+"devDependencies": {
+"electron": "^38.2.2",
+"electron-builder": "^24.13.3"
+}
+}

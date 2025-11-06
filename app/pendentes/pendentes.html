@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pendentes</title>
+  <link rel="icon" href="logopendentes.png">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="pendentes.css">
+</head>
+<body>
+  <button class="voltar" id="btn-voltar">←</button>
+
+  <div class="overlay">
+    <h1 class="titulo">PENDENTES</h1>
+    <div class="container">
+      <table class="tabela">
+        <thead>
+          <tr id="cabecalho">
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Pedido</th>
+            <th>Pagamento</th>
+            <th>Valor</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="pendentes.js"></script>
+  <script>
+    document.getElementById('btn-voltar').addEventListener('click', () => {
+      window.history.back();
+    });
+  </script>
+</body>
+</html>
