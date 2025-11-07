@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     formData.append('senha', senha);
 
     try {
-      const res = await fetch('verificar_admin.php', {
+      const res = await fetch("https://empretecsystem.onrender.com/login/verificar_admin.php", {
         method: 'POST',
         body: formData
       });

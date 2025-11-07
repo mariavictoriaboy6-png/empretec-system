@@ -18,7 +18,7 @@ const paginasNoob = {
 function entrar() {
   const senha = document.getElementById("senha").value.trim();
 
-  fetch("verificar_noob.php", {
+  fetch("https://empretecsystem.onrender.com/login/verificar_noob.php", {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: "senha=" + encodeURIComponent(senha),

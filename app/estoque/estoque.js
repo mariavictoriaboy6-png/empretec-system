@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   async function carregarEstoque() {
     try {
-      const res = await fetch('estoque_fetch.php');
+      const res = await fetch("https://empretecsystem.onrender.com/estoque/estoque_fetch.php");
       const data = await res.json();
 
       tbody.innerHTML = '';

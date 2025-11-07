@@ -19,7 +19,7 @@ let produtosDisponiveis = [];
 // ==============================
 async function carregarProdutos() {
   try {
-    const response = await fetch("buscar_produtos.php");
+    const response = await fetch("https://empretecsystem.onrender.com/caixa/buscar_produtos.php");
     const data = await response.json();
     produtosDisponiveis = data;
   } catch (error) {

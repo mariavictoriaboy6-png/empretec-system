@@ -1,5 +1,5 @@
 function atualizarPendentes() {
-  fetch("pendentes_fetch.php")
+ fetch("https://empretecsystem.onrender.com/pendentes/pendentes_fetch.php")
     .then((res) => res.json())
     .then((data) => {
       const tbody = document.querySelector(".tabela tbody");

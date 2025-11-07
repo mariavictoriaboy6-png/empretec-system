@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   async function carregarHistorico() {
     try {
-      const res = await fetch('historico_fetch.php');
+      const res = await fetch("https://empretecsystem.onrender.com/historico/historico_fetch.php");
       if (!res.ok) throw new Error('Erro ao buscar histórico');
       const data = await res.json();
 

@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ======== FUNÇÃO PRINCIPAL DE CARREGAR PRODUTOS ========
   async function carregarEstoqueAdmin() {
     try {
-      const res = await fetch('estoqueadmin_fetch.php');
+      const res = await fetch("https://empretecsystem.onrender.com/estoque/estoque_fetch.php");
       const data = await res.json();
 
       tbody.innerHTML = '';

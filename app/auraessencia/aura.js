@@ -23,11 +23,11 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!senha) return;
 
     try {
-      const res = await fetch("verifica_senha.php", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: `senha=${encodeURIComponent(senha)}`
-      });
+      const res = await fetch("https://empretecsystem.onrender.com/auraessencia/verificar_senha.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: `senha=${encodeURIComponent(senha)}`
+    });
 
       const data = await res.json();
       if (data.sucesso) {
