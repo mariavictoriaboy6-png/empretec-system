@@ -140,7 +140,7 @@ function atualizarPendentes() {
 
 // Funções de ação
 function mudarPagamento(id) {
-  fetch("confirmar_pagamento.php", {
+  fetch("https://empretecsystem.onrender.com/pendentes/confirmar_pagamento.php", {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: `id=${id}`,
@@ -160,7 +160,7 @@ function mudarStatus(id, statusAtual) {
   else if (statusAtual === "pronto") proximoStatus = "confirmado";
   else proximoStatus = "confirmado";
 
-  fetch("mudar_status.php", {
+  fetch("https://empretecsystem.onrender.com/pendentes/mudar_status.php", {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: `id=${id}&status=${proximoStatus}`,

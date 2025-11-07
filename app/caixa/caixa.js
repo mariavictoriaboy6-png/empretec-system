@@ -207,7 +207,7 @@ concluirBtn.addEventListener("click", async () => {
       totalElement.textContent = "R$0,00";
 
       if (data.tipo_caixa === "normal") {
-        window.location.href = "../pendentes/pendentes.html";
+        window.location.href = "https://empretecsystem.onrender.com/pendentes/pendentes.html";
       }
     } else {
       alert((data.error || "Erro ao registrar pedido") + (data.debug ? "\n\nDEBUG: " + data.debug : ""));

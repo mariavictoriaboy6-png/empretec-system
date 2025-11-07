@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ultimoUpdate = agora;
 
       try {
-        const res = await fetch('estoqueadmin_update.php', {
+        const res = await fetch('https://empretecsystem.onrender.com/estoque/estoqueadmin_update.php', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ id: prod.id, quantidade: novaQtd })
@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
     btnExcluir.addEventListener('click', async () => {
       if (!confirm(`Excluir produto "${prod.nome_produto}"?`)) return;
       try {
-        const res = await fetch('estoqueadmin_deletar.php', {
+        const res = await fetch('https://empretecsystem.onrender.com/estoque/estoqueadmin_deletar.php', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ id: prod.id })
@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
     nomeInput.focus();
 
     try {
-      const res = await fetch('estoqueadmin_insert.php', {
+      const res = await fetch('https://empretecsystem.onrender.com/estoque/estoqueadmin_insert.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ nome_produto: nome, preco, quantidade: qtd })

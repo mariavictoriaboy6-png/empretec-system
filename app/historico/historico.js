@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!confirm(`Deseja realmente excluir o pedido #${id}?`)) return;
 
     try {
-      const res = await fetch('historico_delete.php', {
+      const res = await fetch('https://empretecsystem.onrender.com/admin/historico_delete.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id })

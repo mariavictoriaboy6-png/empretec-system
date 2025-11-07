@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (data.success) {
         // Redireciona direto para o admin
-        window.location.href = "/app/admin/admin.html";
+        window.location.href = "https://empretecsystem.onrender.com/admin/admin.html";
       } else {
         alert(data.error || "Senha incorreta");
       }

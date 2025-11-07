@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const data = await res.json();
       if (data.sucesso) {
-        window.location.href = "/admin/admin.html";
+        window.location.href = "https://empretecsystem.onrender.com/admin/admin.html";
       } else {
         erroMsg.style.display = "block";
       }
